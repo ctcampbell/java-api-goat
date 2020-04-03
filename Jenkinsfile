@@ -14,6 +14,7 @@ pipeline {
         stage('Test') {
             steps {
                 wrap([$class: 'VeracodeInteractiveBuildWrapper', location: 'veracode-iast', port: '10010']) {
+                    sh 'echo $IASTAGENT_LOGGING_STDERR_LEVEL'
                     sh 'curl -sSL https://s3.us-east-2.amazonaws.com/app.veracode-iast.io/iast-ci.sh | sh'
                     sh 'mvn test'
                 }
