@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'maven:3-jdk-8' 
-            args '-v /root/.m2:/root/.m2 -net=host' 
+            args '-v /root/.m2:/root/.m2 --network host' 
         }
     }
     stages {
